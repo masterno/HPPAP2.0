@@ -21,10 +21,16 @@ export default defineConfig(({ mode }) => {
       assetsDir: 'assets',
       emptyOutDir: true,
       rollupOptions: {
+        external: ['react', 'react-dom', 'react-dom/client'],
         output: {
           entryFileNames: 'assets/[name].[hash].js',
           chunkFileNames: 'assets/[name].[hash].js',
-          assetFileNames: 'assets/[name].[hash][extname]'
+          assetFileNames: 'assets/[name].[hash][extname]',
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react-dom/client': 'ReactDOM'
+          }
         }
       }
     }
